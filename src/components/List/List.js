@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import { Card, Row, Col } from "antd";
+import Card from "../Card/Card";
+
+import { Row, Col } from "antd";
 
 const style = { padding: "8px 0", margin: "10px" };
-
-const { Meta } = Card;
 
 class List extends Component {
   constructor(props) {
@@ -37,26 +37,10 @@ class List extends Component {
     return (
       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         {this.state.results.map(function (pokemon, i) {
-          var info = {};
-          fetch(pokemon.url)
-            .then((response) => response.json())
-            .then((data) => {
-              info = data;
-            })
-            .catch((error) => {
-              console.error("There was an error!", error);
-            });
-          console.log(info);
           return (
             <Col className="gutter-row" span={6}>
               <div style={style}>
-                <Card
-                  hoverable
-                  style={{ width: 200 }}
-                  cover={<img alt={pokemon.name} src={info.front_default} />}
-                >
-                  <Meta title={pokemon.name} description={pokemon.url} />
-                </Card>
+                <Card name={pokemon.name} url={pokemon.url} />
               </div>
             </Col>
           );
