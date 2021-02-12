@@ -31,7 +31,10 @@ class Pokemon extends Component {
         style={{ width: 200 }}
         cover={<img alt={this.props.name} src={this.state.front_default} />}
       >
-        <Meta title={this.props.name} />
+        <Meta
+          title={this.props.name.toUpperCase()}
+          style={{ textAlign: "center" }}
+        />
       </Card>
     );
   }
